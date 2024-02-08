@@ -4,7 +4,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cinzaclaro: '#D9D9D9'
+        cinzaclaro: '#D9D9D9',
+        cinzaclarinho: '#C6C6C6',
+        azulescuro: '#4D7B9F',
+        caramelo: '#CF9E76',
+        azulbonito: '#5B85A5',
+        azulclaro: '#9AB7CA'
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif']
       }
     },
   },
