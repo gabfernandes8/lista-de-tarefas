@@ -9,7 +9,8 @@ module.exports = {
         azulescuro: '#4D7B9F',
         caramelo: '#CF9E76',
         azulbonito: '#5B85A5',
-        azulclaro: '#9AB7CA'
+        azulclaro: '#9AB7CA',
+        vermelho: '#D24E35'
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif']

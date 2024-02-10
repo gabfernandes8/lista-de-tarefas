@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../output.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <script src="../js/perfil.js" defer></script>
+    <title>Perfil</title>
+</head>
+<body class="h-screen font-poppins">
+    <main class="h-full w-full fundo flex items-center justify-center relative">
+        <img src="../../assets/img/seagull1.png" alt="gaivotas" class="absolute top-5 right-5 max-md:hidden z-10"> 
+        <img src="../../assets/img/seagull2.png" alt="gaivotas" class="absolute right-7 bottom-[4vh] max-md:hidden z-10"> 
+        <img src="../../assets/img/seagull3.png" alt="gaivotas" class="absolute top-[25%] left-[5vw] max-md:hidden z-10"> 
+        <div class="w-full h-full bg-cinzaclaro/10 fixed pointer-events-none max-md:hidden">
+            <img src="../../assets/img/blue-static.png" alt="granulado" class="w-full h-full opacity-30">
+        </div>
+        <section class="bg-white rounded-xl shadow-[0_0_15px_5px_#4D7B9F] z-10 w-[70vw] h-[80vh] p-6 flex flex-col max-md:w-full max-md:h-full max-md:rounded-none max-md:gap-8">
+            <div class="flex items-center justify-between flex-none">
+                <button class="flex items-center w-[10vw]">
+                    <img src="../img/svg/seta.svg" class="w-8 max-md:w-12" alt="Seta apontando para esquerda">
+                    <span class="text-lg font-semibold max-md:hidden"> Voltar </span>
+                </button>       
+                <h2 class="text-[32px] font-semibold drop-shadow-[2px_2px_1px_#CF9E76] max-md:text-2xl">
+                    Meu perfil
+                </h2>
+                <div class="w-[10vw]"></div>
+            </div>
+            <div class="grid grid-cols-2 content-center grow gap-[5vw] max-md:flex max-md:flex-col max-md:gap-4">
+                <div class="bg-azulescuro w-[30vh] h-[44vh] place-self-center justify-self-end shadow-[0px_0px_2px_2px_rgba(0,0,0,0.1)] flex px-4 pt-4 pb-[10vh] justify-center max-md:w-[16vh] max-md:h-[16vh] max-md:p-0 max-md:shadow-none max-md:rounded-full max-md:place-self-center">
+                    <label for="foto-perfil" class="h-full w-full flex bg-white items-center justify-center cursor-pointer bg-cover bg-no-repeat bg-center max-md:rounded-full max-md:w-full max-md:h-full max-md:bg-azulescuro" id="imagem">
+                        <img class="h-2/5 w-2/5" src="../img/svg/polaroid.svg" alt="Câmera Polaroid">
+                    </label>
+                    <input type="file" id="foto-perfil" class="hidden">
+                </div>
+                <div class="flex flex-col items-center justify-between w-4/5 gap-[5vh] max-md:grow max-md:w-full">
+                    <form action="" class="grid content-center h-auto w-full gap-2 max-md:w-full max-md:gap-5">
+                        <div class="pb-3 max-md:pb-2">
+                            <label class="font-semibold text-azulescuro" for="name"> Nome </label>
+                            <input type="text" class="w-full bg-transparent placeholder-black/60 focus:outline-none border-b border-azulclaro p-1 pl-0">
+                        </div>
+                        <div class="pb-3 max-md:pb-2">
+                            <label class="font-semibold text-azulescuro" for="email"> E-mail </label>
+                            <input type="email" class="w-full bg-transparent placeholder-black/60 focus:outline-none border-b border-azulclaro p-1 pl-0">
+                        </div>
+                        <div class="pb-3 max-md:pb-2">
+                            <label class="font-semibold text-azulescuro" for="password"> Senha </label>
+                            <div class="w-full flex border-b border-azulclaro">
+                                <input type="password" id="senha" class="w-full bg-transparent placeholder-black/60 focus:outline-none p-1 pl-0">
+                                <button type="button">
+                                    <img src="../img/svg/olho.svg" id="olho" alt="Olho" class="h-6 w-6">
+                                </button>
+                            </div>
+                        </div>
+                        <button class="bg-gradient-to-r from-azulclaro to-azulbonito text-white text-xl font-semibold py-2 px-4 shadow-[0_0_5px_0_rgba(77,123,159,0.5)]  hover:shadow-[0_0_5px_0_rgba(77,123,159,0.8)] hover:scale-[1.01] duration-150 ease-in rounded-lg place-self-end">
+                            Salvar
+                        </button>
+                    </form>
+                    <button class="bg-gradient-to-r from-vermelho to-azulbonito shadow-[0_0_5px_0_rgba(77,123,159,0.5)] text-white font-semibold py-4 px-14 text-2xl hover:shadow-[0_0_5px_0_rgba(77,123,159,0.8)] hover:scale-[1.01] duration-150 ease-in rounded-xl max-md:py-3 max-md:w-4/5">
+                        Sair
+                    </button>
+                </div>
+            </div>      
+        </section>
+    </main>
+</body>
+</html>
