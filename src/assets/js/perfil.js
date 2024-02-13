@@ -4,6 +4,7 @@ const olho = document.getElementById('olho')
 const inputSenha = document.getElementById('senha')
 const inputFoto = document.getElementById('foto-perfil')
 const imagemLabel = document.getElementById('imagem')
+const botaoVoltar = document.getElementById('voltar')
 let boolean = false 
 
 olho.addEventListener('click', () => {
@@ -43,5 +44,11 @@ inputFoto.addEventListener('change', () => {
     reader.readAsDataURL(file);
 
     }
+
+})
+
+botaoVoltar.addEventListener('click', () => {
+
+    window.location.href = './tarefas.html'
 
 })
