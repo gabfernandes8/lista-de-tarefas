@@ -81,20 +81,20 @@ const criarTarefas = () => {
     tarefas.forEach((tarefa)=>{
 
         let divTarefa = document.createElement('div')
-        divTarefa.classList.add('flex', 'flex-col', 'h-[24vh]', 'bg-azulclaro/30', 'rounded-md', 'p-4', 'gap-3', 'tarefas', 'hover:bg-azulclaro/50', 'ease-linear', 'duration-150')
+        divTarefa.classList.add('flex', 'flex-col', 'h-[24vh]', 'bg-azulclaro/30', 'rounded-md', 'p-4', 'gap-3', 'tarefas', 'hover:bg-azulclaro/50', 'ease-linear', 'duration-150',  'max-md:h-[18vh]', 'max-md:p-2', 'max-md:gap-1')
         
         let containerTop = document.createElement('div')
         containerTop.classList.add('flex', 'justify-between')
         
         let tituloTarefa = document.createElement('h3')
-        tituloTarefa.classList.add('font-semibold', 'text-2xl')
+        tituloTarefa.classList.add('font-semibold', 'text-2xl', 'max-md:text-lg')
         tituloTarefa.textContent = tarefa.titulo
 
         let containerOpcoes = document.createElement('div')
         containerOpcoes.classList.add('overflow-hidden', 'cursor-pointer', 'relative', 'flex', 'items-center', 'justify-center')
 
         let imgOpcoes = document.createElement('img')
-        imgOpcoes.classList.add('w-8', 'h-8')
+        imgOpcoes.classList.add('w-8', 'h-8', 'max-md:w-6', 'max-md:h-6')
         imgOpcoes.src = '../img/svg/pontos.svg'
         imgOpcoes.alt = '3 pontos na horizontal'
 
@@ -114,7 +114,7 @@ const criarTarefas = () => {
         excluir.textContent = 'Excluir'
 
         let descricaoTarefa = document.createElement('p')
-        descricaoTarefa.classList.add('text-xl', 'grow')
+        descricaoTarefa.classList.add('text-xl', 'grow', 'max-md:text-base')
         descricaoTarefa.textContent = tarefa.descricao
 
         let divBotaoSalvar = document.createElement('div')
@@ -126,11 +126,11 @@ const criarTarefas = () => {
         inputConcluido.id = `conclusão-${tarefa.id}`
 
         let labelConcluido = document.createElement('label')
-        labelConcluido.classList.add('cursor-pointer', 'relative', "before:content-['']", 'before:absolute', 'before:-left-[120px]', 'before:top-0', 'before:bottom-0', 'before:right-0', 'before:m-auto','before:w-4', 'before:h-4', 'before:rounded', 'before:border-[1px]', 'before:border-solid', 'before:border-black', 'before:inline-block')
+        labelConcluido.classList.add('cursor-pointer', 'relative', "before:content-['']", 'before:absolute', 'before:-left-[120px]', 'before:top-0', 'before:bottom-0', 'before:right-0', 'before:m-auto','before:w-4', 'before:h-4', 'before:rounded', 'before:border-[1px]', 'before:border-solid', 'before:border-black', 'before:inline-block', 'max-md:before:w-3', 'max-md:before:h-3', 'max-md:before:-left-[125%]')
         labelConcluido.htmlFor = `conclusão-${tarefa.id}`
 
         let spanConcluido = document.createElement('span')
-        spanConcluido.classList.add('text-lg', 'select-none')
+        spanConcluido.classList.add('text-lg', 'select-none', 'max-md:text-sm')
         spanConcluido.textContent = 'Concluído'
 
         divTarefa.replaceChildren(containerTop, descricaoTarefa, divBotaoSalvar)
@@ -178,13 +178,13 @@ const botaoConcluido = document.getElementById('concluido')
 
 botaoConcluido.addEventListener('click', () => {
 
-    criarTarefas('tarefasNaoConcluidas')
+    // criarTarefas('tarefasNaoConcluidas')
 
 })
 
-// window.onload = () => {
-//     criarTarefas()
-// }
+window.onload = () => {
+    criarTarefas()
+}
 
 
 
@@ -201,11 +201,11 @@ botaoConcluido.addEventListener('click', () => {
 */
 
 /* 
-<div class="flex flex-col h-[24vh] bg-azulclaro/30 rounded-md p-4 gap-3 tarefas hover:bg-azulclaro/50 ease-linear duration-150">
+<div class="flex flex-col h-[24vh] bg-azulclaro/30 rounded-md p-4 gap-3 tarefas hover:bg-azulclaro/50 ease-linear duration-150 max-md:h-[18vh] max-md:p-2 max-md:gap-1">
     <div class="flex justify-between">
-        <h3 class="font-semibold text-2xl">Fazer compras</h3>
+        <h3 class="font-semibold text-2xl max-md:text-lg">Fazer compras</h3>
         <div class="opcoes overflow-hidden cursor-pointer relative flex items-center justify-center">
-            <img src="../img/svg/pontos.svg" alt="3 pontos na horizontal" class="w-8 h-8">
+            <img src="../img/svg/pontos.svg" alt="3 pontos na horizontal" class="w-8 h-8 max-md:w-6 max-md:h-6">
             <div class="absolute top-[100%] right-0 w-fit py-1 bg-azulbonito/50 rounded-lg rounded-tr-none">
                 <button class="text-white px-4 flex items-center justify-center text-end w-full font-medium border-b-azulbonito border-b-[1px] hover:text-azulescuro">
                     <span>
@@ -220,15 +220,15 @@ botaoConcluido.addEventListener('click', () => {
             </div>
         </div>
     </div>
-    <p class="text-xl grow">
+    <p class="text-xl grow max-md:text-base">
         Ir no mercado e comprar sorvete
     </p>
 
     <div class="w-full flex gap-2 items-center justify-end">
         <input type="checkbox" class="hidden concluido" id="conclusao">
         <label for="conclusao" class="cursor-pointer relative before:content-[''] before:absolute before:-left-[22px] before:top-[5px] before:w-4 before:h-4 before:rounded
-                                    before:border-[1px] before:border-solid before:border-black before:inline-block">
-            <span class="text-lg select-none"> Concluído </span>
+                                    before:border-[1px] before:border-solid before:border-black before:inline-block max-md:before:w-3 max-md:before:h-3 max-md:before:-left-[16px]">
+            <span class="text-lg max-md:text-sm select-none"> Concluído </span>
         </label>
     </div>
 </div>
