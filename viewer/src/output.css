@@ -783,6 +783,10 @@ video {
   grid-template-rows: 10vh 60vh 10vh;
 }
 
+.grid-rows-\[10vh_1fr_10vh\] {
+  grid-template-rows: 10vh 1fr 10vh;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1438,6 +1442,14 @@ video {
     height: 100%;
   }
 
+  .max-md\:h-\[18vh\] {
+    height: 18vh;
+  }
+
+  .max-md\:h-4\/5 {
+    height: 80%;
+  }
+
   .max-md\:w-12 {
     width: 3rem;
   }
@@ -1466,6 +1478,10 @@ video {
     flex-direction: column;
   }
 
+  .max-md\:gap-2 {
+    gap: 0.5rem;
+  }
+
   .max-md\:gap-4 {
     gap: 1rem;
   }
@@ -1476,6 +1492,10 @@ video {
 
   .max-md\:gap-8 {
     gap: 2rem;
+  }
+
+  .max-md\:gap-6 {
+    gap: 1.5rem;
   }
 
   .max-md\:place-self-center {
@@ -1503,6 +1523,18 @@ video {
     padding: 0px;
   }
 
+  .max-md\:p-2 {
+    padding: 0.5rem;
+  }
+
+  .max-md\:p-4 {
+    padding: 1rem;
+  }
+
+  .max-md\:p-6 {
+    padding: 1.5rem;
+  }
+
   .max-md\:py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
@@ -1512,9 +1544,22 @@ video {
     padding-bottom: 0.5rem;
   }
 
+  .max-md\:pb-0 {
+    padding-bottom: 0px;
+  }
+
+  .max-md\:text-center {
+    text-align: center;
+  }
+
   .max-md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .max-md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .max-md\:shadow-none {

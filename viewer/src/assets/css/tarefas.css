@@ -59,6 +59,7 @@ input[type=checkbox]:checked + span::before{
     .layout {
         display: flex;
         flex-direction: column;
+        justify-content: start;
     }
     .layout .tarefas:nth-child(2){
         transform: translateX(0);
