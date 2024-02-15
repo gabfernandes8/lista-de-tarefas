@@ -1,7 +1,7 @@
 'use strict'
 
 const olho = document.getElementById('olho')
-const inputSenha = document.getElementById('senha')
+const inputSenha = document.getElementById('password')
 const inputFoto = document.getElementById('foto-perfil')
 const imagemLabel = document.getElementById('imagem')
 const botaoVoltar = document.getElementById('voltar')
