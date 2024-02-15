@@ -32,12 +32,37 @@ const getListarTarefas = async() => {
     } else {
         return false
     }
-
-    
 }
 
 // função para buscar uma tarefa pelo ID
-const getBuscarTarefa = async() => {}
+const getBuscarTarefa = async(id) => {
+    let tarefasJSON = {}
+
+    let dadosTarefa = await tarefasDAO.selectByIdTarefa()
+
+    if (dadosTarefa){
+        tarefasJSON.tarefas = dadosTarefa
+        tarefasJSON.status_code = 200
+        return tarefasJSON
+    } else {
+        return false
+    }
+}
+
+const getTarefasNaoConcluidas = async(concluido) => {
+    let tarefasJSON = {}
+
+    let dadosTarefa = await tarefasDAO.selectTarefasNaoConcluidas()
+
+    if (dadosTarefa){
+        tarefasJSON.tarefas = dadosTarefa
+        tarefasJSON.qt = dadosTarefa.length 
+        tarefasJSON.status_code = 200
+        return tarefasJSON
+    } else {
+        return false
+    }
+}
 
 module.exports={
     setNovaTarefa,
