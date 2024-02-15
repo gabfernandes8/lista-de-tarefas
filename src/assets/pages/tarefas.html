@@ -26,16 +26,49 @@
                 Lista de Tarefas
             </h2>
 
-            <div id="container-tarefas" class="overflow-y-scroll scroll-bar scroll-smooth flex gap-6 px-8 layout relative">
+            <div id="container-tarefas" class="overflow-y-scroll scroll-bar scroll-smooth gap-6 px-8 layout relative max-md:flex!important max-md:flex-col">
 
                 <button id="adicionar-tarefa" class="flex items-center justify-center rounded-md bg-azulclaro/30 h-[24vh] w-[24vh] tarefas hover:bg-azulclaro/50 ease-linear duration-150">
                     <img src="../img/svg/adicionar.svg" alt="Mais" class="h-3/5 w-3/5 pointer-events-none select-none">
                 </button>
 
+                
+                <div class="flex flex-col h-[24vh] bg-azulclaro/30 rounded-md p-4 gap-3 tarefas hover:bg-azulclaro/50 ease-linear duration-150">
+                    <div class="flex justify-between">
+                        <h3 class="font-semibold text-2xl">Fazer compras</h3>
+                        <div class="opcoes overflow-hidden cursor-pointer relative flex items-center justify-center">
+                            <img src="../img/svg/pontos.svg" alt="3 pontos na horizontal" class="w-8 h-8">
+                            <div class="absolute top-[100%] right-0 w-fit py-1 bg-azulbonito/50 rounded-lg rounded-tr-none">
+                                <button class="text-white px-4 flex items-center justify-center text-end w-full font-medium border-b-azulbonito border-b-[1px] hover:text-azulescuro">
+                                    <span>
+                                        Editar
+                                    </span>
+                                </button>
+                                <button class="text-white px-4 flex items-center justify-center text-end w-full font-medium hover:text-azulescuro">
+                                    <span>
+                                        Excluir
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xl grow">
+                        Ir no mercado e comprar sorvete
+                    </p>
+
+                    <div class="w-full flex gap-2 items-center justify-end">
+                        <input type="checkbox" class="hidden concluido" id="conclusao">
+                        <label for="conclusao" class="cursor-pointer relative before:content-[''] before:absolute before:-left-[22px] before:top-[5px] before:w-4 before:h-4 before:rounded
+                                                    before:border-[1px] before:border-solid before:border-black before:inline-block">
+                            <span class="text-lg select-none"> Concluído </span>
+                        </label>
+                    </div>
+                </div>
+
             </div>
 
             <div class="flex justify-between items-center py-4 px-8">
-                <label class="flex gap-2 items-center cursor-pointer" for="concluidas">
+                <label id="concluido" class="flex gap-2 items-center cursor-pointer" for="concluidas">
                     <div class="inline-block h-8 w-16 relative">
                         <input id="concluidas" class="opacity-0 h-0 w-0" type="checkbox">
                         <span class="absolute inset-0 flex items-center justify-between rounded-3xl bg-azulclaro before:content-[''] before:absolute before:h-6 before:w-6 before:rounded-full before:left-1 before:bottom-1 before:ease-in-out before:duration-1000 before:bg-white"></span>

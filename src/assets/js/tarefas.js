@@ -65,11 +65,13 @@ let tarefas = [
         id: 1,
         titulo:'Fazer Compras',
         descricao:'Ir no mercado e comprar sorvete',
+        concluido: false
     },
     {
         id: 2,
         titulo:'Fazer trabalhos da escola',
-        descricao:'Redação de português e Slides de história'
+        descricao:'Redação de português e Slides de história',
+        concluido: false
     }
 
 ]
@@ -154,11 +156,15 @@ const criarTarefas = () => {
         labelConcluido.addEventListener('click', () => {
 
             if(inputConcluido.checked == false){
+
                 tituloTarefa.classList.add('line-through')
                 descricaoTarefa.classList.add('line-through')
+
             } else {
+
                 tituloTarefa.classList.remove('line-through')
                 descricaoTarefa.classList.remove('line-through')
+
             }
 
         })
@@ -168,7 +174,18 @@ const criarTarefas = () => {
 
 }
 
-criarTarefas()
+const botaoConcluido = document.getElementById('concluido')
+
+botaoConcluido.addEventListener('click', () => {
+
+    criarTarefas('tarefasNaoConcluidas')
+
+})
+
+// window.onload = () => {
+//     criarTarefas()
+// }
+
 
 
 /*

@@ -672,10 +672,6 @@ video {
   height: 70vh;
 }
 
-.h-\[75vh\] {
-  height: 75vh;
-}
-
 .h-\[80vh\] {
   height: 80vh;
 }
@@ -690,20 +686,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.max-h-fit {
-  max-height: -moz-fit-content;
-  max-height: fit-content;
-}
-
-.max-h-min {
-  max-height: -moz-min-content;
-  max-height: min-content;
-}
-
-.min-h-\[24vh\] {
-  min-height: 24vh;
 }
 
 .w-0 {
@@ -803,10 +785,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
 }
 
 .content-center {
@@ -937,6 +915,11 @@ video {
   border-bottom-color: rgb(154 183 202 / var(--tw-border-opacity));
 }
 
+.bg-azulbonito {
+  --tw-bg-opacity: 1;
+  background-color: rgb(91 133 165 / var(--tw-bg-opacity));
+}
+
 .bg-azulbonito\/50 {
   background-color: rgb(91 133 165 / 0.5);
 }
@@ -974,15 +957,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-azulbonito {
-  --tw-bg-opacity: 1;
-  background-color: rgb(91 133 165 / var(--tw-bg-opacity));
-}
-
-.bg-azulbonito\/70 {
-  background-color: rgb(91 133 165 / 0.7);
 }
 
 .bg-gradient-to-r {
@@ -1291,9 +1265,19 @@ video {
   position: absolute;
 }
 
+.before\:-left-\[120px\]::before {
+  content: var(--tw-content);
+  left: -120px;
+}
+
 .before\:-left-\[22px\]::before {
   content: var(--tw-content);
   left: -22px;
+}
+
+.before\:bottom-0::before {
+  content: var(--tw-content);
+  bottom: 0px;
 }
 
 .before\:bottom-1::before {
@@ -1306,41 +1290,6 @@ video {
   left: 0.25rem;
 }
 
-.before\:top-\[5px\]::before {
-  content: var(--tw-content);
-  top: 5px;
-}
-
-.before\:top-\[7px\]::before {
-  content: var(--tw-content);
-  top: 7px;
-}
-
-.before\:top-\[4px\]::before {
-  content: var(--tw-content);
-  top: 4px;
-}
-
-.before\:top-\[2px\]::before {
-  content: var(--tw-content);
-  top: 2px;
-}
-
-.before\:top-\[6px\]::before {
-  content: var(--tw-content);
-  top: 6px;
-}
-
-.before\:top-\[6\.5px\]::before {
-  content: var(--tw-content);
-  top: 6.5px;
-}
-
-.before\:bottom-0::before {
-  content: var(--tw-content);
-  bottom: 0px;
-}
-
 .before\:right-0::before {
   content: var(--tw-content);
   right: 0px;
@@ -1351,44 +1300,9 @@ video {
   top: 0px;
 }
 
-.before\:-left-0::before {
+.before\:top-\[5px\]::before {
   content: var(--tw-content);
-  left: -0px;
-}
-
-.before\:left-0::before {
-  content: var(--tw-content);
-  left: 0px;
-}
-
-.before\:-left-\[24px\]::before {
-  content: var(--tw-content);
-  left: -24px;
-}
-
-.before\:-left-\[50px\]::before {
-  content: var(--tw-content);
-  left: -50px;
-}
-
-.before\:-left-\[70px\]::before {
-  content: var(--tw-content);
-  left: -70px;
-}
-
-.before\:-left-\[100px\]::before {
-  content: var(--tw-content);
-  left: -100px;
-}
-
-.before\:-left-\[120px\]::before {
-  content: var(--tw-content);
-  left: -120px;
-}
-
-.before\:-left-\[110px\]::before {
-  content: var(--tw-content);
-  left: -110px;
+  top: 5px;
 }
 
 .before\:m-auto::before {
@@ -1478,24 +1392,14 @@ video {
   background-color: rgb(154 183 202 / 0.5);
 }
 
-.hover\:text-azulescuro:hover {
-  --tw-text-opacity: 1;
-  color: rgb(77 123 159 / var(--tw-text-opacity));
-}
-
 .hover\:text-azulclaro:hover {
   --tw-text-opacity: 1;
   color: rgb(154 183 202 / var(--tw-text-opacity));
 }
 
-.hover\:text-azulclarinho:hover {
+.hover\:text-azulescuro:hover {
   --tw-text-opacity: 1;
-  color: rgb(200 216 227 / var(--tw-text-opacity));
-}
-
-.hover\:text-black:hover {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(77 123 159 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {

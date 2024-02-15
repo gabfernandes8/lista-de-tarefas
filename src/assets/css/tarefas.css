@@ -54,3 +54,13 @@ input[type=checkbox]:checked + span::before{
 .layout .tarefas:nth-child(2){
     transform: translateX(calc(-100% + 24vh));
 }
+
+@media not all and (min-width: 768px){
+    .layout {
+        display: flex;
+        flex-direction: column;
+    }
+    .layout .tarefas:nth-child(2){
+        transform: translateX(0);
+    }
+}
