@@ -23,7 +23,28 @@ olho.addEventListener('click', () => {
 
 })
 
-inputFoto.addEventListener('change', () => {
+// const encurtarLink = async(linkParametro) => {
+
+//     let apiKey = '9OZYpSzl5SrA2AKZdutWGOV9RuNLlJQPzT2OVhp1KWmJfunnt5QTj3kl5WkV'
+
+//     let link = linkParametro
+//     const url = `https://api.tinyurl.com/create?api_token=${apiKey}`
+//     const response = await fetch(url, {
+//         method: 'POST',
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ 
+//             url: `${linkParametro}`,
+//             domain: "tinyurl.com"
+//         })
+//       })
+
+//     const linkEncurtado = await response.json()
+
+//     console.log(linkEncurtado)
+
+// }
+
+inputFoto.addEventListener('change', async() => {
 
     let file = inputFoto.files[0]
     
@@ -33,9 +54,8 @@ inputFoto.addEventListener('change', () => {
     
         reader.addEventListener('load', (e) => {
             const readerTarget = e.target
-            // localStorage.setItem('imagem', readerTarget.result)
             imagemLabel.style.backgroundImage = `url(${readerTarget.result})`
-            
+           
             if(imagemLabel.children[0].classList.contains('hidden') == false)
             imagemLabel.children[0].classList.add('hidden')
             
@@ -52,3 +72,6 @@ botaoVoltar.addEventListener('click', () => {
     window.location.href = './tarefas.html'
 
 })
+
+
+

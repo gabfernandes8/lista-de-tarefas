@@ -3,8 +3,23 @@ input[type=checkbox]:checked + span{
     animation: gradiente linear 1s both;
 }
 
+input[type=checkbox]:not(:checked) + span{
+    transition: ease all 1s;
+    animation: gradiente2 linear 1s both;
+}
+
 input[type=checkbox]:checked + span::before{
     transform: translateX(32px); 
+}
+
+@keyframes aparecer {
+    0%{
+        opacity: -0%;
+    }
+
+    100%{
+        opacity: 100%;
+    }
 }
 
 @keyframes gradiente {
@@ -15,6 +30,18 @@ input[type=checkbox]:checked + span::before{
 
     100%{
         background-color: #4D7B9F;
+    }
+
+}
+
+@keyframes gradiente2 {
+
+    0%{
+        background-color: #4D7B9F;
+    }
+    
+    100%{
+        background-color: #9AB7CA;
     }
 
 }
@@ -42,7 +69,7 @@ input[type=checkbox]:checked + span::before{
 .layout{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min-content, calc(50% - 6px)));
-    grid-gap: 12px;
+    gap: 12px;
     justify-content: center;
     padding-bottom: 12px;
 }
@@ -51,18 +78,12 @@ input[type=checkbox]:checked + span::before{
     max-width: 100%;
 }
 
-.layout .tarefas:nth-child(2){
-    transform: translateX(calc(-100% + 24vh));
-}
-
 @media not all and (min-width: 768px){
     .layout {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         justify-content: start;
-    }
-    .layout .tarefas:nth-child(2){
-        transform: translateX(0);
+        gap: 16px;
     }
     input[type=checkbox]:checked + span::before{
         transform: translateX(26px); 

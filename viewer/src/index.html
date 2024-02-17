@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="./assets/js/login.js" defer></script>
     <link rel="stylesheet" href="./output.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Login</title>
@@ -29,6 +30,9 @@
                 <label for="password" class="flex items-center gap-2 bg-cinzaclarinho/60 py-3 px-4 rounded text-[20px] w-[85%] max-md:w-[95%] max-md:h-14">
                     <img src="./assets/img/svg/senha.svg" alt="senha" class="w-[25px] h-[25px]">
                     <input type="password" name="password" id="password" placeholder="Senha" class="bg-transparent placeholder-black/60 w-full focus:outline-none"/>
+                    <button type="button">
+                        <img src="./assets/img/svg/olho.svg" id="olho" alt="Olho" class="h-6 w-6">
+                    </button>
                 </label>
                 <button class="bg-gradient-to-r from-azulclaro to-azulbonito text-white text-2xl font-semibold py-3 px-10 shadow-[0_0_5px_0_rgba(77,123,159,0.5)] hover:shadow-[0_0_5px_0_rgba(77,123,159,0.8)] hover:scale-[1.01] duration-150 ease-in rounded-xl mt-4 max-md:w-[95%] max-md:rounded max-md:h-14" id="botao">
                    Entrar
@@ -38,6 +42,7 @@
                 <a href="./assets/pages/cadastro.html" class="text-caramelo font-semibold hover:underline"> Cadastre-se </a>
             </h2>
         </form>
+        <audio src="./assets/audio/mar.mp3" autoplay="on" loop></audio>
     </main>
 </body>
 </html>

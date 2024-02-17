@@ -20,24 +20,22 @@
         <div class="w-full h-full bg-cinzaclaro/10 fixed pointer-events-none max-md:hidden">
             <img src="../../assets/img/static.png" alt="granulado" class="w-full h-full opacity-10">
         </div>
-        <section class="bg-white rounded-xl shadow-[0_0_15px_5px_#4D7B9F] z-10 w-[70vw] h-[80vh] grid grid-rows-[10vh_1fr_10vh] max-md:w-full max-md:h-full max-md:rounded-none max-md:gap-6">
+        <section class="bg-white rounded-xl shadow-[0_0_15px_5px_#4D7B9F] z-10 w-[70vw] h-[80vh] grid grid-rows-[10vh_1fr_10vh] max-md:w-full max-md:h-full max-md:rounded-none max-md:gap-5">
            
             <h2 class="text-[32px] font-semibold drop-shadow-[2px_2px_1px_#CF9E76] max-md:text-3xl py-4 px-8 max-md:p-6 max-md:text-center max-md:pb-0">
                 Lista de Tarefas
             </h2>
 
-            <div id="container-tarefas" class="overflow-y-scroll scroll-bar scroll-smooth gap-6 px-8 layout relative">
+            <div id="container-tarefas" class="overflow-y-scroll scroll-bar scroll-smooth px-8 layout relative max-md:px-5">
 
-                <button id="adicionar-tarefa" class="flex items-center justify-center rounded-md bg-azulclaro/30 h-[24vh] w-[24vh] tarefas hover:bg-azulclaro/50 ease-linear duration-150 max-md:w-full max-md:h-[18vh]">
-                    <img src="../img/svg/adicionar.svg" alt="Mais" class="h-3/5 w-3/5 pointer-events-none select-none max-md:h-4/5 max-md:w-4/5">
-                </button>
+                <!-- Itens inseridos com Javascript -->
 
             </div>
 
-            <div class="flex justify-between items-center py-4 px-8 max-md:px-3">
-                <label id="concluido" class="flex gap-2 items-center cursor-pointer" for="concluidas">
+            <div class="flex justify-between items-center py-4 px-8 max-md:px-5">
+                <label class="flex gap-2 items-center cursor-pointer" for="concluido">
                     <div class="inline-block h-8 w-16 relative max-md:h-[30px] max-md:w-14">
-                        <input id="concluidas" class="opacity-0 h-0 w-0" type="checkbox">
+                        <input id="concluido" class="opacity-0 h-0 w-0" type="checkbox">
                         <span class="absolute inset-0 flex items-center justify-between rounded-3xl bg-azulclaro before:content-[''] before:absolute before:h-6 before:w-6 before:rounded-full before:left-1 before:bottom-1 before:ease-in-out before:duration-1000 before:bg-white max-md:before:h-[22px] max-md:before:w-[22px]"></span>
                     </div>
                     <span class="select-none text-lg max-md:text-sm">
@@ -50,8 +48,8 @@
                     </a>
                 </button>
             </div>
-
         </section>
+        <audio src="../audio/grito.mp3" class="hidden" id="audio"></audio>
     </main>
 </body>
 </html>

@@ -16,6 +16,9 @@ module.exports = {
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif']
+      },
+      animation: {
+        // aparecer: 'aparecer 1.2s ease-in-out'
       }
     },
   },
