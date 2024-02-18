@@ -1,6 +1,8 @@
 'use strict'
 
-const button = document.getElementById('login')
+import { listarUsuarios } from './funcoes-api.js'
+
+const botaoLogin = document.getElementById('botao')
 const olho = document.getElementById('olho')
 const inputSenha = document.getElementById('password')
 let boolean = false 
@@ -22,25 +24,31 @@ olho.addEventListener('click', () => {
 })
 
 const validarLogin = async() => {
+ 
     const email = document.getElementById('email').value
-    const senha = document.getElementById('senha').value
+    const senha = document.getElementById('password').value
 
-    if(email === '' || senha === ''){
-        alert('Preencha todos os campos')
-    }else{
-        const users = await fetch('localhost:8080/usuarios')
-        const listUsers = await users.json()
+    const usuarios = await listarUsuarios()
 
-        listUsers.forEach((user) => {
-            if(email === user.email && senha === user.senha){
-                window.location.href = ''
+    if(email != '' && senha != ''){
+        
+        usuarios.usuarios.forEach(usuario => {
+    
+            if(email == usuario.email && senha == usuario.senha){
+
+                localStorage.setItem('usuarioId', usuario.id)   
+                window.location.href = './assets/pages/tarefas.html'
+    
+            } else {
+    
+                alert('Email e/ou senha incorretos')
+    
             }
+    
         })
 
     }
 
 }
 
-window.onload = () => {
-
-}
+botaoLogin.addEventListener('click', validarLogin)

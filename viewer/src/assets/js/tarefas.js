@@ -1,47 +1,55 @@
 'use strict'
 
-const containerTarefas = document.getElementById('container-tarefas') 
+// import { tarefasUsuario } from './funcoes-api.js'
+// import { tarefasUsuarioNaoConcluidas } from './funcoes-api.js'
+// import { concluirTarefa } from './funcoes-api.js'
+// import { tarefaNaoConcluida } from './funcoes-api.js'
+// import { removerTarefa } from './funcoes-api.js'
+// import { selecionarTarefa } from './funcoes-api.js'
+// import { criarTarefa } from './funcoes-api.js'
+// import { atualizarTarefa } from './funcoes-api.js'
+
+const containerTarefas = document.getElementById('container-tarefas')
 const botaoConcluido = document.getElementById('concluido')
 const audio = document.getElementById('audio')
-let botaoAdicionarTarefa 
 let concluido
 
 let tarefas = [
 
     {
         id: 1,
-        titulo:'Fazer Compras',
-        descricao:'Ir no mercado e comprar sorvete',
+        titulo: 'Fazer Compras',
+        descricao: 'Ir no mercado e comprar sorvete',
         concluido: false
     },
     {
         id: 2,
-        titulo:'Fazer trabalhos da escola',
-        descricao:'Redação de português e Slides de história',
+        titulo: 'Fazer trabalhos da escola',
+        descricao: 'Redação de português e Slides de história',
         concluido: false
     },
     {
         id: 3,
-        titulo:'Lavar a lousa',
-        descricao:'Limpar as panelas e secar os pratos',
+        titulo: 'Lavar a lousa',
+        descricao: 'Limpar as panelas e secar os pratos',
         concluido: true
     },
     {
         id: 4,
-        titulo:'Jogar com o meu irmão',
-        descricao:'Lembrar de jogar xadrez na quinta',
+        titulo: 'Jogar com o meu irmão',
+        descricao: 'Lembrar de jogar xadrez na quinta',
         concluido: true
     },
     {
         id: 5,
-        titulo:'IMPORTANTE',
-        descricao:'Fazer inscrição do Enem',
+        titulo: 'IMPORTANTE',
+        descricao: 'Fazer inscrição do Enem',
         concluido: false
     },
     {
         id: 6,
-        titulo:'Fazer as malas',
-        descricao:'Não esquecer de levar meias',
+        titulo: 'Fazer as malas',
+        descricao: 'Não esquecer de levar meias',
         concluido: false
     }
 
@@ -51,26 +59,26 @@ let tarefasNaoConcluidas = [
 
     {
         id: 1,
-        titulo:'Fazer Compras',
-        descricao:'Ir no mercado e comprar sorvete',
+        titulo: 'Fazer Compras',
+        descricao: 'Ir no mercado e comprar sorvete',
         concluido: false
     },
     {
         id: 2,
-        titulo:'Fazer trabalhos da escola',
-        descricao:'Redação de português e Slides de história',
+        titulo: 'Fazer trabalhos da escola',
+        descricao: 'Redação de português e Slides de história',
         concluido: false
     },
     {
         id: 5,
-        titulo:'IMPORTANTE',
-        descricao:'Fazer inscrição do Enem',
+        titulo: 'IMPORTANTE',
+        descricao: 'Fazer inscrição do Enem',
         concluido: false
     },
     {
         id: 6,
-        titulo:'Fazer as malas',
-        descricao:'Não esquecer de levar meias',
+        titulo: 'Fazer as malas',
+        descricao: 'Não esquecer de levar meias',
         concluido: false
     }
 
@@ -78,8 +86,8 @@ let tarefasNaoConcluidas = [
 
 let tarefa = {
     id: 1,
-    titulo:'Fazer Compras',
-    descricao:'Ir no mercado e comprar sorvete',
+    titulo: 'Fazer Compras',
+    descricao: 'Ir no mercado e comprar sorvete',
     concluido: false
 }
 
@@ -103,15 +111,15 @@ const resetarContainerTarefas = () => {
 }
 
 const criarFormularioMontarTarefa = () => {
-  
+
     let criarTarefa = document.createElement('form')
     criarTarefa.classList.add('h-2/4', 'w-2/4', 'rounded-md', 'bg-azulclaro', 'm-auto', 'inset-0', 'flex', 'flex-col', 'px-5', 'py-1', 'max-md:w-full', 'max-md:h-[100vh]', 'fixed', 'max-md:rounded-none', 'z-20', 'fundo-tarefa')
-    
+
     let containerSuperior = document.createElement('div')
     containerSuperior.classList.add('h-1/5', 'max-md:h-[18vh]', 'w-full', 'flex', 'items-center', 'justify-center', 'relative', 'Formulario')
 
     let titulo = document.createElement('input')
-    titulo.classList.add('bg-transparent', 'text-white', 'placeholder:text-white', 'focus:outline-none', 'placeholder:text-3xl', 'placeholder:font-semibold', 'placeholder:drop-shadow-[-1px_1px_0px_#333d55]', 'text-3xl', 'font-semibold', 'drop-shadow-[-1px_1px_0px_#333d55]', 'placeholder:text-black' ,'w-full', 'h-full', 'Formulario')
+    titulo.classList.add('bg-transparent', 'text-white', 'placeholder:text-white', 'focus:outline-none', 'placeholder:text-3xl', 'placeholder:font-semibold', 'placeholder:drop-shadow-[-1px_1px_0px_#333d55]', 'text-3xl', 'font-semibold', 'drop-shadow-[-1px_1px_0px_#333d55]', 'placeholder:text-black', 'w-full', 'h-full', 'Formulario')
     titulo.placeholder = 'Título da tarefa'
     titulo.setAttribute('name', 'title')
     titulo.setAttribute('type', 'text')
@@ -132,16 +140,36 @@ const criarFormularioMontarTarefa = () => {
     descricao.id = 'description'
 
     let divBotao = document.createElement('div')
-    divBotao.classList.add('h-1/6', 'flex', 'justify-end', 'max-md:h-[13vh]','Formulario')
+    divBotao.classList.add('h-1/6', 'flex', 'justify-end', 'max-md:h-[13vh]', 'Formulario')
 
     let botaoSalvar = document.createElement('button')
     botaoSalvar.classList.add('h-full', 'Formulario')
+    botaoSalvar.addEventListener('click', () => {
+
+        let tituloValue
+
+        if (titulo.value == '') 
+            tituloValue = `Tarefa sem título`
+        else 
+            tituloValue = titulo.value
+
+        let tarefa = {
+
+            titulo: tituloValue,
+            descricao: descricao.value,
+            concluido: false
+
+        }
+
+        //criarTarefa(tarefa)
+
+    })
 
     let imagemSalvar = document.createElement('img')
     imagemSalvar.src = '../img/svg/salvar.svg'
     imagemSalvar.alt = 'Salvar'
     imagemSalvar.classList.add('h-3/5', 'Formulario')
-    
+
     criarTarefa.replaceChildren(containerSuperior, descricao, divBotao)
     containerSuperior.replaceChildren(titulo, botaoFechar)
     botaoFechar.appendChild(imagemFechar)
@@ -153,15 +181,15 @@ const criarFormularioMontarTarefa = () => {
 }
 
 const criarFormularioMontarTarefaPreenchido = (tarefa) => {
-  
+
     let criarTarefa = document.createElement('form')
     criarTarefa.classList.add('h-2/4', 'w-2/4', 'rounded-md', 'bg-azulclaro', 'm-auto', 'inset-0', 'flex', 'flex-col', 'px-5', 'py-1', 'max-md:w-full', 'max-md:h-[100vh]', 'fixed', 'max-md:rounded-none', 'z-20', 'fundo-tarefa')
-    
+
     let containerSuperior = document.createElement('div')
     containerSuperior.classList.add('h-1/5', 'max-md:h-[18vh]', 'w-full', 'flex', 'items-center', 'justify-center', 'relative', 'Formulario')
 
     let titulo = document.createElement('input')
-    titulo.classList.add('bg-transparent', 'text-white', 'placeholder:text-white', 'focus:outline-none', 'placeholder:text-3xl', 'placeholder:font-semibold', 'placeholder:drop-shadow-[-1px_1px_0px_#333d55]', 'text-3xl', 'font-semibold', 'drop-shadow-[-1px_1px_0px_#333d55]', 'placeholder:text-black' ,'w-full', 'h-full', 'Formulario')
+    titulo.classList.add('bg-transparent', 'text-white', 'placeholder:text-white', 'focus:outline-none', 'placeholder:text-3xl', 'placeholder:font-semibold', 'placeholder:drop-shadow-[-1px_1px_0px_#333d55]', 'text-3xl', 'font-semibold', 'drop-shadow-[-1px_1px_0px_#333d55]', 'placeholder:text-black', 'w-full', 'h-full', 'Formulario')
     titulo.placeholder = 'Título da tarefa'
     titulo.setAttribute('name', 'title')
     titulo.setAttribute('type', 'text')
@@ -184,16 +212,38 @@ const criarFormularioMontarTarefaPreenchido = (tarefa) => {
     descricao.textContent = tarefa.descricao
 
     let divBotao = document.createElement('div')
-    divBotao.classList.add('h-1/6', 'flex', 'justify-end', 'max-md:h-[13vh]','Formulario')
+    divBotao.classList.add('h-1/6', 'flex', 'justify-end', 'max-md:h-[13vh]', 'Formulario')
 
     let botaoSalvar = document.createElement('button')
     botaoSalvar.classList.add('h-full', 'Formulario')
+    botaoSalvar.setAttribute('type', 'button')
+    botaoSalvar.addEventListener('click', () => {
+
+        let tituloValue
+
+        if (titulo.value == '') 
+            tituloValue = `Tarefa sem título`
+        else 
+            tituloValue = titulo.value
+
+        let tarefaAtualizada = {
+
+            id: tarefa.id,
+            titulo: tituloValue,
+            descricao: descricao.value,
+            concluido: tarefa.concluido
+
+        }
+        
+        //atualizarTarefa(tarefaAtualizada)
+
+    })
 
     let imagemSalvar = document.createElement('img')
     imagemSalvar.src = '../img/svg/salvar.svg'
     imagemSalvar.alt = 'Salvar'
     imagemSalvar.classList.add('h-3/5', 'Formulario')
-    
+
     criarTarefa.replaceChildren(containerSuperior, descricao, divBotao)
     containerSuperior.replaceChildren(titulo, botaoFechar)
     botaoFechar.appendChild(imagemFechar)
@@ -206,14 +256,14 @@ const criarFormularioMontarTarefaPreenchido = (tarefa) => {
 
 const criarTarefas = (arrayTarefas) => {
 
-    arrayTarefas.forEach((tarefa)=>{
+    arrayTarefas.forEach((tarefa) => {
 
         let divTarefa = document.createElement('div')
         divTarefa.classList.add('flex', 'flex-col', 'h-[24vh]', 'bg-azulclaro/30', 'rounded-md', 'p-4', 'gap-3', 'tarefas', 'hover:bg-azulclaro/60', 'ease-linear', 'duration-150', 'max-md:p-2', 'max-md:gap-1', 'max-md:w-full', 'animate-aparecer')
-        
+
         let containerTop = document.createElement('div')
         containerTop.classList.add('flex', 'justify-between')
-        
+
         let tituloTarefa = document.createElement('h3')
         tituloTarefa.classList.add('font-semibold', 'text-2xl', 'max-md:text-lg')
         tituloTarefa.textContent = tarefa.titulo
@@ -227,11 +277,11 @@ const criarTarefas = (arrayTarefas) => {
         imgOpcoes.alt = '3 pontos na horizontal'
 
         let opcoes = document.createElement('div')
-        opcoes.classList.add('absolute', 'top-[100%]', 'right-0', 'w-fit','py-1', 'bg-azulbonito', 'rounded-lg', 'rounded-tr-none')
+        opcoes.classList.add('absolute', 'top-[100%]', 'right-0', 'w-fit', 'py-1', 'bg-azulbonito', 'rounded-lg', 'rounded-tr-none')
 
         let botaoEditar = document.createElement('button')
         botaoEditar.classList.add('text-white', 'px-4', 'flex', 'items-center', 'justify-center', 'text-end', 'w-full', 'font-medium', 'border-b-azulclaro', 'border-b-[1px]', 'hover:text-black', 'editar')
-        
+
         let editar = document.createElement('span')
         editar.classList.add('editar')
         editar.textContent = 'Editar'
@@ -254,7 +304,7 @@ const criarTarefas = (arrayTarefas) => {
         inputConcluido.setAttribute('type', 'checkbox')
         inputConcluido.id = `conclusão-${tarefa.id}`
 
-        if(tarefa.concluido == true){
+        if (tarefa.concluido == true) {
             inputConcluido.checked = true
             tituloTarefa.classList.add('line-through')
             descricaoTarefa.classList.add('line-through')
@@ -262,7 +312,7 @@ const criarTarefas = (arrayTarefas) => {
         }
 
         let labelConcluido = document.createElement('label')
-        labelConcluido.classList.add('cursor-pointer', 'relative', "before:content-['']", 'before:absolute', 'before:-left-[120px]', 'before:top-0', 'before:bottom-0', 'before:right-0', 'before:m-auto','before:w-4', 'before:h-4', 'before:rounded', 'before:border-[1px]', 'before:border-solid', 'before:border-black', 'before:inline-block', 'max-md:before:w-3', 'max-md:before:h-3', 'max-md:before:-left-[125%]')
+        labelConcluido.classList.add('cursor-pointer', 'relative', "before:content-['']", 'before:absolute', 'before:-left-[120px]', 'before:top-0', 'before:bottom-0', 'before:right-0', 'before:m-auto', 'before:w-4', 'before:h-4', 'before:rounded', 'before:border-[1px]', 'before:border-solid', 'before:border-black', 'before:inline-block', 'max-md:before:w-3', 'max-md:before:h-3', 'max-md:before:-left-[125%]')
         labelConcluido.htmlFor = `conclusão-${tarefa.id}`
 
         let spanConcluido = document.createElement('span')
@@ -271,31 +321,31 @@ const criarTarefas = (arrayTarefas) => {
 
         containerOpcoes.addEventListener('click', () => {
 
-            containerOpcoes.classList.toggle('overflow-hidden')      
-        
+            containerOpcoes.classList.toggle('overflow-hidden')
+
         })
-    
+
         containerOpcoes.addEventListener('mouseleave', () => {
-            containerOpcoes.classList.add('overflow-hidden') 
+            containerOpcoes.classList.add('overflow-hidden')
         })
-    
+
         labelConcluido.addEventListener('click', () => {
 
-            if(inputConcluido.checked == false){
+            if (inputConcluido.checked == false) {
 
                 tituloTarefa.classList.add('line-through')
                 descricaoTarefa.classList.add('line-through')
                 divTarefa.classList.add('bg-azulclaro/60')
 
                 //concluirTarefa(tarefa.id)
-                
+
             } else {
 
                 tituloTarefa.classList.remove('line-through')
                 descricaoTarefa.classList.remove('line-through')
                 divTarefa.classList.remove('bg-azulclaro/60')
 
-                //tarefaAberta(tarefa.id)
+                //tarefaNaoConcluida(tarefa.id)
 
             }
 
@@ -322,7 +372,9 @@ const criarTarefas = (arrayTarefas) => {
         botaoExcluir.appendChild(excluir)
         divBotaoSalvar.replaceChildren(inputConcluido, labelConcluido)
         labelConcluido.appendChild(spanConcluido)
-        containerTarefas.insertAdjacentElement('beforeend', divTarefa)
+
+        let botaoAdicionarTarefa = containerTarefas.children[0]
+        botaoAdicionarTarefa.insertAdjacentElement('afterend', divTarefa)
 
     })
 
@@ -334,7 +386,7 @@ const montarFormularioPreenchido = (id) => {
 
     let botaoAdicionarTarefa = containerTarefas.children[0]
 
-    if(!botaoAdicionarTarefa.classList.contains('pointer-events-none')){
+    if (!botaoAdicionarTarefa.classList.contains('pointer-events-none')) {
         botaoAdicionarTarefa.classList.add('pointer-events-none')
     }
 
@@ -343,26 +395,26 @@ const montarFormularioPreenchido = (id) => {
     containerTarefas.insertAdjacentElement('beforeend', formularioTarefa)
 
     window.addEventListener('click', (e) => {
-    
-        if(!e.target.classList.contains('Formulario') && e.target.id != 'adicionar-tarefa' && !e.target.classList.contains('editar')){
-    
-            if(containerTarefas.lastChild == formularioTarefa){
+
+        if (!e.target.classList.contains('Formulario') && e.target.id != 'adicionar-tarefa' && !e.target.classList.contains('editar')) {
+
+            if (containerTarefas.lastChild == formularioTarefa) {
                 containerTarefas.removeChild(formularioTarefa)
                 botaoAdicionarTarefa.classList.remove('pointer-events-none')
             }
 
-        } 
-        
+        }
+
     })
 
 
 }
 
 const montarFormulario = () => {
-    
+
     let botaoAdicionarTarefa = containerTarefas.children[0]
 
-    if(!botaoAdicionarTarefa.classList.contains('pointer-events-none')){
+    if (!botaoAdicionarTarefa.classList.contains('pointer-events-none')) {
         botaoAdicionarTarefa.classList.add('pointer-events-none')
     }
 
@@ -371,62 +423,74 @@ const montarFormulario = () => {
     containerTarefas.insertAdjacentElement('beforeend', formularioTarefa)
 
     window.addEventListener('click', (e) => {
-    
-        if(!e.target.classList.contains('Formulario') && e.target.id != 'adicionar-tarefa' && !e.target.classList.contains('editar')){
-    
-            if(containerTarefas.lastChild == formularioTarefa){
+
+        if (!e.target.classList.contains('Formulario') && e.target.id != 'adicionar-tarefa' && !e.target.classList.contains('editar')) {
+
+            if (containerTarefas.lastChild == formularioTarefa) {
                 containerTarefas.removeChild(formularioTarefa)
                 botaoAdicionarTarefa.classList.remove('pointer-events-none')
             }
 
-        } 
-        
-        if (e.target.nodeName == 'BUTTON'){
+        }
+
+        if (e.target.nodeName == 'BUTTON') {
             audio.play()
         }
 
     })
-    
+
 }
 
 const montarTarefas = () => {
 
-    //let arrayTarefas = tarefasUsuario()
+    //let id = localStorage.getItem('usuarioId')
+    //let arrayTarefas = tarefasUsuario(id)
+    //let arrayTarefasNaoConcluidas = tarefasUsuarioNaoConcluidas(id)
 
     resetarContainerTarefas()
 
-    if(localStorage.getItem('concluido')){
+    if (localStorage.getItem('concluido')) {
+
         concluido = localStorage.getItem('concluido')
-        
-        if(concluido == 'true'){
+
+        if (concluido == 'true') {
+
             botaoConcluido.checked = true
             criarTarefas(tarefasNaoConcluidas)
-        }else{
+            //criarTarefas(arrayTarefasNaoConcluidas)
+
+        } else {
+
             criarTarefas(tarefas)
+            //criarTarefas(arrayTarefas)
+
         }
 
-    }else{
+    } else {
+
         concluido = false
         localStorage.setItem('concluido', false)
         resetarContainerTarefas()
         criarTarefas(tarefas)
+
     }
+
 }
 
 botaoConcluido.addEventListener('click', (e) => {
 
-    if(e.target.checked){
+    if (e.target.checked) {
         localStorage.setItem('concluido', true)
         montarTarefas()
-    }else{
+    } else {
         localStorage.setItem('concluido', false)
         montarTarefas()
     }
 
 })
 
-window.onload = (e) => {
-    
+window.onload = () => {
+
     montarTarefas()
 
 }

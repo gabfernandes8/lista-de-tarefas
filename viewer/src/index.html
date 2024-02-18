@@ -6,9 +6,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="./assets/js/login.js" defer></script>
     <link rel="stylesheet" href="./output.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/login.js" type="module" defer></script>
     <title>Login</title>
 </head>
 <body class="h-screen font-poppins">
@@ -25,11 +25,11 @@
                 <h1 class="text-[32px] font-semibold text-center pb-4">LOGIN</h1>
                 <label for="email" class="flex items-center gap-2 bg-cinzaclarinho/60 py-3 px-4 rounded text-[20px] w-[85%] max-md:w-[95%] max-md:h-14">
                     <img src="./assets/img/svg/email.svg" alt="email" class="w-[25px] h-[25px]">
-                    <input type="email" name="email" id="email" placeholder="E-mail" class="bg-transparent placeholder-black/60 w-full focus:outline-none"/>
+                    <input autocomplete="off" required type="email" name="email" id="email" placeholder="E-mail" class="bg-transparent placeholder-black/60 w-full focus:outline-none"/>
                 </label>
                 <label for="password" class="flex items-center gap-2 bg-cinzaclarinho/60 py-3 px-4 rounded text-[20px] w-[85%] max-md:w-[95%] max-md:h-14">
                     <img src="./assets/img/svg/senha.svg" alt="senha" class="w-[25px] h-[25px]">
-                    <input type="password" name="password" id="password" placeholder="Senha" class="bg-transparent placeholder-black/60 w-full focus:outline-none"/>
+                    <input autocomplete="off" required type="password" name="password" id="password" placeholder="Senha" class="bg-transparent placeholder-black/60 w-full focus:outline-none"/>
                     <button type="button">
                         <img src="./assets/img/svg/olho.svg" id="olho" alt="Olho" class="h-6 w-6">
                     </button>
