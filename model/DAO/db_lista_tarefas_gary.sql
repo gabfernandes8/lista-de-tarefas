@@ -20,3 +20,6 @@ create table tbl_usuarios
     email varchar(50),
     senha varchar(10)
 );
+
+insert into tbl_usuarios (nome, email, senha)values
+("Ryan Alves", "ryan@email.com", "123");
