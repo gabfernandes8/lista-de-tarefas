@@ -67,14 +67,14 @@ insert into tbl_tarefas (
 						);
                         
 insert into tbl_tarefas (
-                                        titulo,
-                                        descricao,
-                                        concluido,
-                                        usuario_id
-                                        ) values (
-                                            'Fazer compras',
-                                            'Comprar chocolate',
-                                            false,
-                                            1
-                                        );
+                            titulo,
+                            descricao,
+                            concluido,
+                            usuario_id
+                        ) values (
+                            'Fazer compras',
+                            'Comprar chocolate',
+                            false,
+                            1
+                        );
                         

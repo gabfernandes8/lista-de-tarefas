@@ -1,10 +1,12 @@
 'use strict'
 
-const listarUsuarios = async() => {}
+const listarUsuarios = async() => {} // GET
 const pegarIdUsuario = async(email) => {} //GET
-const cadastrarUsuario = async(usuario) => {} //POST
 const pegarUsuario = async(id) => {} //GET
 const atualizarUsuario = async(usuario) => {} //UPDATE
+const cadastrarUsuario = async(usuario) => {} //POST
+
+
 
 const tarefasUsuario = async(id) => {
 
