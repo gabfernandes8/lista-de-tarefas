@@ -23,3 +23,47 @@ create table tbl_usuarios
 
 insert into tbl_usuarios (nome, email, senha)values
 ("Ryan Alves", "ryan@email.com", "123");
+
+-- Pesquisas --
+
+select * from tbl_tarefas where usuario_id = 1;
+
+select * from tbl_tarefas where usuario_id = 1 and concluido = false;
+
+select * from tbl_tarefas where id = 1 and usuario_id = 1;
+
+update tbl_tarefas set concluido = true where id = 1 and usuario_id = 1;
+
+update tbl_tarefas set concluido = false where id = 1 and usuario_id = 1;
+
+update tbl_tarefas set 
+					titulo = "Fazer compras",	
+                    descricao = "Ir no mercado e comprar chocolate"
+					where id = 1 and usuario_id = 1;
+        
+delete from tbl_tarefas where id = 2 and usuario_id = 1;
+
+insert into tbl_tarefas (
+							titulo,
+                            descricao,
+                            concluido,
+                            usuario_id
+						) values (
+							"Fazer compras",
+							"Ir no mercado e comprar sorvete",
+							false,
+							1
+						);
+                        
+insert into tbl_tarefas (
+                                        titulo,
+                                        descricao,
+                                        concluido,
+                                        usuario_id
+                                        ) values (
+                                            'Fazer compras',
+                                            'Comprar chocolate',
+                                            false,
+                                            1
+                                        );
+                        

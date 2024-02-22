@@ -1,7 +1,7 @@
 /***************************************************************************************
 * Objetivo: criar a integração com o banco de dados MySQL para fazer o CRUD de tarefas
 * Data: 15/02/2024
-* Autor: Gabriela Fernandes
+* Autor: Gabriela Fernandes e Ryan Alves
 * Versão: 1.0
 ***************************************************************************************/
 
@@ -11,62 +11,186 @@ const {PrismaClient} = require('@prisma/client')
 // instanciando o objeto prisma com as caracteristicas do prisma client
 const prisma = new PrismaClient
 
-// inserir uma nova tarefa
-const insertTarefa = async(tarefa) => {
-    let sql = `insert into tbl_tarefa (titulo, descricao, concluido)
+// listar todas as tarefas de um usuário
+const selectAllTarefasById = async(idUsuario) => {
+
+    try {
+        
+        let sql = `select * from tbl_tarefas where usuario_id = ${idUsuario}`
     
-    (${tarefa.titulo}, ${tarefa.descricao}, ${tarefa.concluido})`
+        // executa o scriptSQL no BD e recebe o retorno dos dados na variável rsTarefas
+        let rsTarefas = await prisma.$queryRawUnsafe(sql)
+        
+        return rsTarefas
+        
+    } catch (error) {
+        
+        return false
+
+    }
+   
+}
+
+// listar todas as tarefas não concluidas de um usuário
+const selectTarefasNaoConcluidasById = async(idUsuario) => {
+
+    try {
+        
+        let sql = `select * from tbl_tarefas where usuario_id = ${idUsuario} and concluido = false`
+    
+        // executa o scriptSQL no BD e recebe o retorno dos dados na variável rsTarefas
+        let rsTarefas = await prisma.$queryRawUnsafe(sql)
+        
+        return rsTarefas
+        
+    } catch (error) {
+        
+        return false
+
+    }
+   
+}
+
+// buscar uma tarefa existente filtrando pelo ID da tarefa e do usuário
+const selectTarefaById = async(idUsuario, idTarefa) => {
+
+    try {
+        
+
+        let sql = `select * from tbl_tarefas where id = ${idTarefa} and usuario_id = ${idUsuario}`
+        
+        // executa o scriptSQL no BD e recebe o retorno dos dados na variável rsTarefas
+        let rsTarefas = await prisma.$queryRawUnsafe(sql)
+
+        return rsTarefas
+        
+    } catch (error) {
+        
+        return false
+
+    }
+}
+
+// define o estado de uma tarefa como concluida
+const updateConcluirTarefa = async(idUsuario, idTarefa) => {
+
+    try {
+        
+        let sql = `update tbl_tarefas set concluido = true where id = ${idTarefa} and usuario_id = ${idUsuario}`
+    
+        // executa o scriptSQL no BD e recebe o retorno dos dados na variável rsTarefas
+        let rsTarefas = await prisma.$queryRawUnsafe(sql)
+        
+        return rsTarefas
+        
+    } catch (error) {
+        
+        return false
+
+    }
+
+}
+
+// define o estado de uma tarefa como não concluida
+const updateTarefaNaoConcluida = async(idUsuario, idTarefa) => {
+    
+    try {
+        
+        let sql = `update tbl_tarefas set concluido = false where id = ${idTarefa} and usuario_id = ${idUsuario}`
+    
+        // executa o scriptSQL no BD e recebe o retorno dos dados na variável rsTarefas
+        let rsTarefas = await prisma.$queryRawUnsafe(sql)
+        
+        return rsTarefas
+        
+    } catch (error) {
+        
+        return false
+
+    }
+
 }
 
 // atualizar uma tarefa existente filtrando pelo ID
-const updateTarefa = async(id) => {
-    let sql = `update tbl_tarefa where id=${id}`
+const updateTarefaById = async(idUsuario, idTarefa, tarefa) => {
+
+    try {
+        
+        let sql =  `update tbl_tarefas set 
+                                        titulo = '${tarefa.titulo}',	    
+                                        descricao = '${tarefa.descricao}'
+                    where id = ${idTarefa} and usuario_id = ${idUsuario}`   
+
+                    console.log(sql)
+
+        // executa o scriptSQL no BD e recebe o retorno dos dados na variável rsTarefas
+        let rsTarefas = await prisma.$queryRawUnsafe(sql)
+        
+        return rsTarefas
+        
+    } catch (error) {
+        
+        return false
+
+    }
+
 }
 
 // excluir uma tarefa existente filtrando pelo ID
-const deleteTarefa = async(id) => {
-    let sql = `delete from tbl_tarefa where id=${id}`
-}
-
-// listar todas as tarefas
-const selectAllTarefas = async() => {
-    let sql = 'select * from tbl_tarefa'
-
-    // $queryrawUnsafe(‘encaminha apenas a variavel’)
-    // $queryRaw(‘codigo digitado aqui’)
-
-    // executa o scriptSQL no BD e recebe o retorno dos dados na variável rsTarefas
-    let rsTarefas = await prisma.$queryRawUnsafe(sql)
+const deleteTarefaById = async(idUsuario, idTarefa) => {
     
-    // tratamento de erro para retornar os dados ou retornar falsy
-    if (rsTarefas.length > 0) {
+    try {
+        
+        let sql = `delete from tbl_tarefas where id = ${idTarefa} and usuario_id = ${idUsuario}`
+
+        // executa o scriptSQL no BD e recebe o retorno dos dados na variável rsTarefas
+        let rsTarefas = await prisma.$queryRawUnsafe(sql)
+        
         return rsTarefas
-    } else {
+        
+    } catch (error) {
+        
         return false
     }
-    
+
 }
 
-// buscar a tarefa existente filtrando pelo ID
-const selectByIdTarefa = async(id) => {
-    let sql = `select from tbl_tarefa where id=${id}`
+// inserir uma nova tarefa
+const insertTarefa = async(tarefa, idUsuario) => {
+
+    try {
+        
+        let sql = `insert into tbl_tarefas (
+                                        titulo,
+                                        descricao,
+                                        concluido,
+                                        usuario_id
+                                        ) values (
+                                            '${tarefa.titulo}',
+                                            '${tarefa.descricao}',
+                                            false,
+                                            ${idUsuario}
+                                        )`
+
+        let resultStatus = await prisma.$executeRawUnsafe(sql)
+
+        return true
+
+    } catch (error) {
+        
+        return false
+
+    }
+
 }
 
-// buscar tarefas não concluídas
-const selectTarefasNaoConcluidas = async(concluido) => {
-    let sql = `select from tbl_tarefa where concluido=false`
-}
-
-// marcar tarefa concluída
-const updateTarefaConcluida = async() => {
-    let sql = `update tbl_tarefa set concluido=true where id=${id}`
-}
-
-module.exports={
-    insertTarefa,
-    updateTarefa,
-    deleteTarefa,
-    selectAllTarefas,
-    selectByIdTarefa,
-    selectTarefasNaoConcluidas
+module.exports = {
+    selectAllTarefasById,
+    selectTarefasNaoConcluidasById,
+    selectTarefaById,
+    updateConcluirTarefa,
+    updateTarefaNaoConcluida,
+    updateTarefaById,
+    deleteTarefaById,
+    insertTarefa
 }

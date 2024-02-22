@@ -1,13 +1,33 @@
 /*****************************************************************
-* Objetivo: criar uma api para responder as tarefas da empresa GARY's TASKS
+* Objetivo: Criar uma api para responder as tarefas da empresa GARY's TASKS
 * Data: 15/02/2024
-* Autor: Gabriela Fernandes
+* Autor: Gabriela Fernandes e Ryan Alves
 * Versão: 1.0
 *****************************************************************/
+
+/****************************************************************************************************************************************************
+* Para realizar a conexão com o Banco de Dados precisamos utilizar uma dependência:  
+*  - SEQUELIZE  ORM
+*  - PRISMA     ORM
+*  - FASTIFY    ORM
+*
+* Prisma - Dependências:
+*   npm install prisma --save
+*   npm install @prisma/client --save
+*   
+* Comando para incialização o prisma
+*   npx prisma init
+*
+* Comando para sincronizar o Banco de Dados e o Prisma
+* npx prisma migrate dev
+****************************************************************************************************************************************************/
 
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+
+//Define que os dados que irão chegar no body da requisição será no padrão JSON
+const bodyParserJSON = bodyParser.json();
 
 //index do backend
 const app = express()
@@ -22,22 +42,102 @@ app.use((request, response, next) => {
 
 /*************** IMPORTS DE ARQUIVOS E BIBLIOTECAS DO PROJETO *******************/
     const controllerTarefas = require('./controller/controller_tarefas.js')
+    const controllerUsuarios = require('./controller/controller_usuario.js')
 /****************************************************************************** */
 
-app.get('/v1/lista-de-tarefas/tarefas', cors(), async(request, response, next) => {
+app.get('/v1/lista-de-tarefas/tarefas/:id', cors(), async(request, response, next) => {
 
-    // chama a função para retornar os dados da tarefas
-    let dadosTarefa = await controllerTarefas.getListarTarefas()
+    let usuario = request.params.id
 
-    // validação para verificar se existem dados
-    if (dadosTarefa){
-        response.json(dadosTarefa)
-        response.status(200)
-    } else {
-        response.json({message: "Nenhum registro encontrado"})
-        response.status(404)
-    }
+    let dadosTarefa = await controllerTarefas.getListarTarefas(usuario)
+
+    response.status(dadosTarefa.status_code)
+    response.json(dadosTarefa)
+
 })
 
+app.get('/v1/lista-de-tarefas/tarefas/nao-concluidas/:id', cors(), async(request, response, next) => {
 
-app.listen(8080, () => {})
+    let usuario = request.params.id
+
+    let dadosTarefa = await controllerTarefas.getListarTarefasNaoConcluidas(usuario)
+
+    response.status(dadosTarefa.status_code)
+    response.json(dadosTarefa)
+
+})
+
+app.get('/v1/lista-de-tarefas/tarefa/', cors(), async(request, response, next) => {
+
+    let tarefa = request.query.idTarefa
+    let usuario = request.query.idUsuario
+
+    let dadosTarefa = await controllerTarefas.getBuscarTarefa(usuario, tarefa)
+
+    response.status(dadosTarefa.status_code)
+    response.json(dadosTarefa)
+
+})
+
+app.put('/v1/lista-de-tarefas/tarefa/concluir/', cors(), async(request, response, next) => {
+
+    let tarefa = request.query.idTarefa
+    let usuario = request.query.idUsuario
+
+    let dadosTarefa = await controllerTarefas.setConcluirTarefa(usuario, tarefa)
+
+    response.status(dadosTarefa.status_code)
+    response.json(dadosTarefa)
+
+})
+
+app.put('/v1/lista-de-tarefas/tarefa/nao-concluir/', cors(), async(request, response, next) => {
+
+    let tarefa = request.query.idTarefa
+    let usuario = request.query.idUsuario
+
+    let dadosTarefa = await controllerTarefas.setTarefaNaoConcluida(usuario, tarefa)
+
+    response.status(dadosTarefa.status_code)
+    response.json(dadosTarefa)
+
+})
+
+app.put('/v1/lista-de-tarefas/tarefa/atualizar/', cors(), bodyParserJSON, async(request, response, next) => {
+
+    let tarefa = request.query.idTarefa
+    let usuario = request.query.idUsuario
+    let objTarefa = request.body
+
+    let dadosTarefa = await controllerTarefas.setAtualizarTarefa(usuario, tarefa, objTarefa)
+
+    response.status(dadosTarefa.status_code)
+    response.json(dadosTarefa)
+
+})
+
+app.delete('/v1/lista-de-tarefas/tarefa/excluir/', cors(), async(request, response, next) => {
+
+    let tarefa = request.query.idTarefa
+    let usuario = request.query.idUsuario
+
+    let dadosTarefa = await controllerTarefas.setExcluirTarefa(usuario, tarefa)
+
+    response.status(dadosTarefa.status_code)
+    response.json(dadosTarefa)
+
+})
+
+app.post('/v1/lista-de-tarefas/criar-tarefa/:id', cors(), bodyParserJSON, async(request, response, next) => {
+
+    let tarefa = request.body
+    let usuario = request.params.id
+
+    let dadosTarefa = await controllerTarefas.setNovaTarefa(usuario, tarefa)
+
+    response.status(dadosTarefa.status_code)
+    response.json(dadosTarefa)
+
+})
+
+app.listen(8080, () => {console.log('Servidor aguardando requisições na porta 8080')})
