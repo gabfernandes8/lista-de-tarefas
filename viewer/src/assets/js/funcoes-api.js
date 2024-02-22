@@ -1,23 +1,37 @@
 'use strict'
 
-const listarUsuarios = async() => {
-
-    const url = ''
-    const response = await fetch(url, {
-        'Access-Control-Request-Method': 'GET',
-        'Access-Control-Request-Headers': 'Content-Type, Authorization',
-        'method': 'GET'
-    })
-    const data = response.json()
-    return data
-
-}
-
+const listarUsuarios = async() => {}
 const pegarIdUsuario = async(email) => {} //GET
 const cadastrarUsuario = async(usuario) => {} //POST
 const pegarUsuario = async(id) => {} //GET
 const atualizarUsuario = async(usuario) => {} //UPDATE
-const tarefasUsuario = async(id) => {} //GET
+
+const tarefasUsuario = async(id) => {
+
+    try {
+        
+        const url = `http://localhost:8080/v1/lista-de-tarefas/tarefas/${id}`
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const response = await fetch(url, options)
+        const data = response.json()
+        console.log(data)
+        return data
+        
+    } catch (error) {
+
+        console.log('ERRO')
+        return false
+        
+    }
+
+
+} //GET
+
 const tarefasUsuarioNaoConcluidas = async(id) => {} //GET
 const concluirTarefa = async(id) => {} //UPDATE
 const tarefaNaoConcluida = async(id) => {} //UPDATE
