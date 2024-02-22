@@ -35,7 +35,7 @@ const getListarTarefas = async(idUsuario) => {
             if(dadosTarefas.length > 0){
                 
                 // Montando o JSON para retornar a tarefa
-                tarefasJSON.filmes = dadosTarefas
+                tarefasJSON.tarefas = dadosTarefas
                 tarefasJSON.status_code = 200
                 // Retorna o JSON montado
                 return tarefasJSON
@@ -79,7 +79,7 @@ const getListarTarefasNaoConcluidas = async(idUsuario) => {
             if(dadosTarefas.length > 0){
                 
                 // Montando o JSON para retornar a tarefa
-                tarefasJSON.filmes = dadosTarefas
+                tarefasJSON.tarefas = dadosTarefas
                 tarefasJSON.status_code = 200
                 // Retorna o JSON montado
                 return tarefasJSON
@@ -124,7 +124,7 @@ const getBuscarTarefa = async(idUsuario, idTarefa) => {
             if(dadosTarefas.length > 0){
                 
                 // Montando o JSON para retornar a tarefa
-                tarefasJSON.filmes = dadosTarefas
+                tarefasJSON.tarefa = dadosTarefas
                 tarefasJSON.status_code = 200
                 // Retorna o JSON montado
                 return tarefasJSON
