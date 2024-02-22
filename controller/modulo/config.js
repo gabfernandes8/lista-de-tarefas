@@ -14,6 +14,12 @@ const ERROR_INVALID_ID = {
     message: 'O ID encaminhado na requisição não é válido'
 }
 
+const ERROR_INVALID_EMAIL = {
+    status: false,
+    status_code: 400,
+    message: 'O Email encaminhado na requisição não é válido'
+}
+
 const ERROR_NOT_FOUND = {
     status: false,
     status_code: 404,
@@ -54,6 +60,7 @@ const DELETED_ITEM = {
 
 module.exports = {
     ERROR_INVALID_ID,
+    ERROR_INVALID_EMAIL,
     ERROR_NOT_FOUND,
     ERROR_REQUIRED_FIELDS,
     ERROR_INTERNAL_SERVER_DB,
