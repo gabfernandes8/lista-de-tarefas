@@ -45,6 +45,56 @@ app.use((request, response, next) => {
     const controllerUsuarios = require('./controller/controller_usuario.js')
 /****************************************************************************** */
 
+app.get('/v1/lista-de-tarefas/usuarios/', cors(), async(request, response, next) => {
+
+    let dadosUsuario = await controllerUsuarios.getListarUsuarios()
+
+    response.status(dadosUsuario.status_code)
+    response.json(dadosUsuario)
+
+})
+
+app.get('/v1/lista-de-tarefas/usuarios/:email', cors(), async(request, response, next) => {
+
+    let email = request.params.email
+
+    let dadosUsuario = await controllerUsuarios.getUserIdByEmail(email)
+
+    response.status(dadosUsuario.status_code)
+    response.json(dadosUsuario)
+
+})
+
+app.get('/v1/lista-de-tarefas/usuarios/:id', cors(), async(request, response, next) => {
+
+    let id = request.params.id
+
+    let dadosUsuario = await controllerUsuarios.getUserByID(id)
+
+    response.status(dadosUsuario.status_code)
+    response.json(dadosUsuario)
+
+})
+
+app.put('/v1/lista-de-tarefas/usuario/atualizar', cors(), bodyParserJSON, async(request, response, next) => {
+
+    let usuario = request.body
+    let dadosUsuario = await controllerUsuarios.updateUser(usuario)
+
+    response.status(dadosUsuario.status_code)
+    response.json(dadosUsuario)
+})
+
+app.post('/v1/lista-de-tarefas/criar-usuario', cors(), bodyParserJSON, async(request, response, next) => {
+
+    let usuario = request.body
+    let dadosUsuario = await controllerUsuarios.setNewUser(usuario)
+
+    response.status(dadosUsuario.status_code)
+    response.json(dadosUsuario)
+
+})
+
 app.get('/v1/lista-de-tarefas/tarefas/:id', cors(), async(request, response, next) => {
 
     let usuario = request.params.id

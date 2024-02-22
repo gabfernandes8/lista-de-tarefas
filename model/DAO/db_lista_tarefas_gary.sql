@@ -22,9 +22,20 @@ create table tbl_usuarios
 );
 
 insert into tbl_usuarios (nome, email, senha)values
-("Ryan Alves", "ryan@email.com", "123");
+("Ryan Alves", "ryan@email.com", "123"),
+("Gabriela Fernandes", "gab@email.com", "123");
 
 -- Pesquisas --
+
+select * from tbl_usuarios;
+
+select id from tbl_usuarios where email = "ryan@email.com";
+
+update tbl_usuarios set 
+					nome='Vitor de Jesus',
+                    email='vitor@email.com',
+                    senha='seinao' 
+			where id=2;
 
 select * from tbl_tarefas where usuario_id = 1;
 
